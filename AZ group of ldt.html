@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZ Group of Ltd · modern premium</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter + Sora (clean & premium) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* ----- RESET & VARIABLES ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --az-primary: #0a2540;      /* deep navy */
+            --az-secondary: #00b4d8;     /* fresh cyan */
+            --az-accent: #ffb703;         /* warm gold */
+            --az-light: #f8fbff;          /* soft background */
+            --az-gray: #5b6f82;
+            --az-white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow-sm: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 40px rgba(10,37,64,0.12);
+            --border-light: 1px solid rgba(0,180,216,0.15);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--az-light);
+            color: #1e2b37;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ----- NAVBAR (stylish glass) ----- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--az-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: var(--az-secondary);
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--az-primary);
+            margin-left: 25px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            color: var(--az-secondary);
+        }
+
+        /* ----- HERO (animated gradient) ----- */
+        .hero {
+            padding: 100px 0;
+            background: radial-gradient(circle at top right, #e0f7fa, #ffffff);
+            overflow: hidden;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+        .hero-content h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--az-primary);
+        }
+        .hero-highlight {
+            color: var(--az-secondary);
+            position: relative;
+            display: inline-block;
+        }
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--az-gray);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        .hero-badge {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* ----- BUTTONS (premium) ----- */
+        .btn {
+            background: var(--az-primary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(10,37,64,0.2);
+            background: var(--az-secondary);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--az-primary);
+            color: var(--az-primary);
+        }
+        .btn-outline:hover {
+            background: var(--az-primary);
+            color: white;
+            border-color: var(--az-primary);
+        }
+
+        /* ----- SECTIONS (general) ----- */
+        section {
+            padding: 80px 0;
+            border-bottom: var(--border-light);
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--az-primary);
+        }
+        .section-sub {
+            text-align: center;
+            color: var(--az-gray);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+        }
+
+        /* ----- CARD GRID (modern) ----- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--az-white);
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            text-align: left;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--az-secondary);
+            box-shadow: var(--shadow-hover);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--az-secondary);
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--az-primary);
+        }
+        .card p {
+            color: var(--az-gray);
+            margin-bottom: 20px;
+        }
+        .card-link {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--az-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .card-link i {
+            transition: 0.2s;
+        }
+        .card-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ----- SECTOR BLOCKS (services & sectors) ----- */
+        .sector-block {
+            background: var(--az-white);
+            border-radius: 25px;
+            padding: 40px 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            border: var(--border-light);
+            transition: 0.3s;
+        }
+        .sector-block:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: var(--az-secondary);
+        }
+        .sector-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--az-primary);
+            margin-bottom: 30px;
+        }
+        .sector-title i {
+            color: var(--az-secondary);
+            font-size: 2.2rem;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        .service-item {
+            background: var(--az-light);
+            border-radius: 60px;
+            padding: 12px 20px;
+            font-weight: 500;
+            color: var(--az-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(0,180,216,0.2);
+            transition: 0.2s;
+        }
+        .service-item i {
+            color: var(--az-secondary);
+        }
+        .service-item:hover {
+            background: var(--az-secondary);
+            color: white;
+            border-color: var(--az-secondary);
+        }
+        .service-item:hover i {
+            color: white;
+        }
+
+        /* ----- GAME TAGS (stylish) ----- */
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .game-tag {
+            background: var(--az-white);
+            color: var(--az-primary);
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            border: 1px solid var(--az-secondary);
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .game-tag:hover {
+            background: var(--az-secondary);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        /* ----- CONTACT (split) ----- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+        .contact-info {
+            background: var(--az-primary);
+            color: white;
+            padding: 45px 35px;
+            border-radius: 30px;
+        }
+        .contact-info h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin: 20px 0;
+            font-size: 1rem;
+        }
+        .info-item i {
+            color: var(--az-accent);
+            width: 25px;
+        }
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 25px;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: var(--az-accent);
+            transform: translateY(-4px);
+        }
+        .contact-form {
+            background: var(--az-white);
+            padding: 45px 35px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px 22px;
+            border: 1.5px solid #e6ecf2;
+            border-radius: 60px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--az-secondary);
+        }
+        textarea {
+            border-radius: 25px !important;
+            min-height: 120px;
+        }
+
+        footer {
+            background: var(--az-primary);
+            color: #cbd5e0;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-badge { justify-content: center; }
+            .nav-links a { margin: 0 10px; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="wrapper nav-container">
+            <a href="#" class="logo">AZ <span>Group</span></a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#subsidiaries">Subsidiaries</a>
+                <a href="#services">Services</a>
+                <a href="#stores">Stores</a>
+                <a href="#games">Games</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="wrapper hero-grid">
+            <div class="hero-content">
+                <h1>Where <span class="hero-highlight">innovation</span> meets excellence</h1>
+                <p class="hero-desc">AZ Group of Ltd — a premium holding of digital account sales, e‑commerce, gaming, and 2FA security.</p>
+                <div class="hero-badge">
+                    <a href="#services" class="btn">Explore sectors</a>
+                    <a href="#contact" class="btn btn-outline">Get in touch</a>
+                </div>
+            </div>
+            <div style="background: rgba(0,180,216,0.1); border-radius: 60% 40% 40% 60%; padding: 30px;">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2300b4d8' opacity='0.2'/%3E%3Ctext x='60' y='160' font-family='Sora' font-size='40' fill='%230a2540' font-weight='700'%3EAZ%3C/text%3E%3Ctext x='60' y='210' font-family='Inter' font-size='22' fill='%235b6f82'%3Epremium group%3C/text%3E%3C/svg%3E" alt="AZ visual" style="max-width:100%; border-radius: 30px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBSIDIARIES (6 companies) -->
+    <section id="subsidiaries">
+        <div class="wrapper">
+            <h2 class="section-title">Our subsidiaries</h2>
+            <div class="section-sub">Six specialised companies, each with its own dedicated page</div>
+            <div class="card-grid">
+                <div class="card"><i class="fas fa-store card-icon"></i><h3>Account Store One Asia</h3><p>Digital accounts marketplace</p><a href="#" class="card-link">Dedicated page <i class="fas fa-arrow-right"></i></a></div>
+                <div class="card"><i class="fas fa-gamepad card-icon"></i><h3>All4 Gamers</h3><p>Gaming products & accounts</p><a href="#" class="card-link">Dedicated page <i class="fas fa-arrow-right"></i></a></div>
+                <div class="card"><i class="fas fa-cart-shopping card-icon"></i><h3>FlashSell247</h3><p>E‑commerce platform</p><a href="#" class="card-link">Dedicated page <i class="fas fa-arrow-right"></i></a></div>
+                <div class="card"><i class="fas fa-dragon card-icon"></i><h3>World of Games</h3><p>Game accounts & items</p><a href="#" class="card-link">Dedicated page <i class="fas fa-arrow-right"></i></a></div>
+                <div class="card"><i class="fas fa-shield-halved card-icon"></i><h3>2faonline.com (Pro Ads)</h3><p>2FA & digital security</p><a href="#" class="card-link">Dedicated page <i class="fas fa-arrow-right"></i></a></div>
+                <div class="card"><i class="fas fa-headset card-icon"></i><h3>2falive</h3><p>Account support & recovery</p><a href="#" class="card-link">Dedicated page <i class="fas fa-arrow-right"></i></a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & SECTORS (detailed blocks) -->
+    <section id="services">
+        <div class="wrapper">
+            <h2 class="section-title">Services & sectors</h2>
+            <div class="section-sub">Industries we operate in and the specific services we deliver</div>
+
+            <div class="sector-block">
+                <div class="sector-title"><i class="fas fa-id-card"></i> Digital Account Sales & Management</div>
+                <div class="service-grid">
+                    <div class="service-item"><i class="fas fa-check"></i> Verified accounts for platforms</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Account recovery & restoration</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Bulk account management</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Aged accounts (social & gaming)</div>
+                </div>
+            </div>
+
+            <div class="sector-block">
+                <div class="sector-title"><i class="fas fa-bag-shopping"></i> E‑commerce & Online Store Operations</div>
+                <div class="service-grid">
+                    <div class="service-item"><i class="fas fa-check"></i> Product listing & store management</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Inventory & order fulfillment</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Marketplace optimization</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Pricing & competitor analysis</div>
+                </div>
+            </div>
+
+            <div class="sector-block">
+                <div class="sector-title"><i class="fas fa-dice-d6"></i> Gaming Services & Virtual Items</div>
+                <div class="service-grid">
+                    <div class="service-item"><i class="fas fa-check"></i> Game accounts, items, virtual currency</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Boosting & coaching</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Skins & rare item trading</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Game key distribution</div>
+                </div>
+            </div>
+
+            <div class="sector-block">
+                <div class="sector-title"><i class="fas fa-lock"></i> Account Security & 2FA Services</div>
+                <div class="service-grid">
+                    <div class="service-item"><i class="fas fa-check"></i> Recovery, protection, verification</div>
+                    <div class="service-item"><i class="fas fa-check"></i> 2FA setup & consulting</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Security audits & risk assessment</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Pro ads (2faonline.com)</div>
+                </div>
+            </div>
+
+            <div class="sector-block">
+                <div class="sector-title"><i class="fas fa-briefcase"></i> Business Consultancy & Support</div>
+                <div class="service-grid">
+                    <div class="service-item"><i class="fas fa-check"></i> Consultancy for online operations</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Freelance team management</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Process automation</div>
+                    <div class="service-item"><i class="fas fa-check"></i> Market entry strategy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORES (same subsidiaries as platforms) -->
+    <section id="stores">
+        <div class="wrapper">
+            <h2 class="section-title">Stores & platforms</h2>
+            <div class="section-sub">Each store has its own dedicated page with full details</div>
+            <div class="card-grid">
+                <div class="card"><i class="fas fa-globe card-icon"></i><h3>Account Store One Asia</h3><a href="#" class="card-link">Store page →</a></div>
+                <div class="card"><i class="fas fa-globe card-icon"></i><h3>All4 Gamers</h3><a href="#" class="card-link">Store page →</a></div>
+                <div class="card"><i class="fas fa-globe card-icon"></i><h3>FlashSell247</h3><a href="#" class="card-link">Store page →</a></div>
+                <div class="card"><i class="fas fa-globe card-icon"></i><h3>World of Games</h3><a href="#" class="card-link">Store page →</a></div>
+                <div class="card"><i class="fas fa-globe card-icon"></i><h3>2faonline.com</h3><a href="#" class="card-link">Store page →</a></div>
+                <div class="card"><i class="fas fa-globe card-icon"></i><h3>2falive</h3><a href="#" class="card-link">Store page →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAMES COVERED -->
+    <section id="games">
+        <div class="wrapper">
+            <h2 class="section-title">Games we cover</h2>
+            <div class="section-sub">Extensive inventory for all major titles</div>
+            <div class="game-tags">
+                <span class="game-tag">Mobile Legends</span>
+                <span class="game-tag">Free Fire</span>
+                <span class="game-tag">PUBG Mobile</span>
+                <span class="game-tag">Call of Duty</span>
+                <span class="game-tag">FIFA Online</span>
+                <span class="game-tag">Roblox</span>
+                <span class="game-tag">Valorant</span>
+                <span class="game-tag">Genshin Impact</span>
+                <span class="game-tag">League of Legends</span>
+                <span class="game-tag">Apex Legends</span>
+                <span class="game-tag">Dota 2</span>
+                <span class="game-tag">Fortnite</span>
+                <span class="game-tag">Overwatch 2</span>
+                <span class="game-tag">Rocket League</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="wrapper">
+            <h2 class="section-title">Get in touch</h2>
+            <div class="section-sub">We'll respond within 24 hours</div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>AZ Group HQ</h3>
+                    <div class="info-item"><i class="fas fa-map-pin"></i> 12 Marina Boulevard, #08-03, Singapore 018982</div>
+                    <div class="info-item"><i class="fas fa-phone"></i> +65 6789 1234</div>
+                    <div class="info-item"><i class="fas fa-envelope"></i> contact@azgroup.ltd</div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group"><input type="text" placeholder="Full name" required></div>
+                        <div class="form-group"><input type="email" placeholder="Email address" required></div>
+                        <div class="form-group"><textarea placeholder="Your message..."></textarea></div>
+                        <button type="submit" class="btn" style="width:100%;">Send message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrapper">
+            <p>© 2026 AZ Group of Ltd — All rights reserved. A modern premium holding.</p>
+        </div>
+    </footer>
+
+    <!-- tiny demo script for dedicated page simulation -->
+    <script>
+        (function() {
+            // card links & service items simulate dedicated page
+            const links = document.querySelectorAll('.card-link, .service-item');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const text = link.closest('.card')?.querySelector('h3')?.innerText || link.innerText;
+                    alert('[Demo] Dedicated page for: ' + text);
+                });
+            });
+            // contact form demo
+            const form = document.querySelector('.contact-form form');
+            if(form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('✨ Thank you! We’ll be in touch soon.');
+                    form.reset();
+                });
+            }
+            // smooth scroll for nav links
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId && targetId !== '#') {
+                        const target = document.querySelector(targetId);
+                        if(target) target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
